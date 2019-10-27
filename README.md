@@ -12,14 +12,14 @@
 
 计划提供（可能）以下功能：
 
-- 第三方登录（暂定 Github）
-- 发帖（暂定只包含文字）
-- 回应（同上）
-- 赞同、反对和其他表态（类似 Github Issue）
-- 不同分区（类似 V2EX）
-- 帖子无跳转，可直接展开（类似知乎网页版）
-- 可选自动加载（类似 Pixiv）
-- 管理员机制
+- [ ] 第三方登录（暂定 Github）
+- [ ] 发帖（暂定只包含文字）
+- [ ] 回应（同上）
+- [ ] 赞同、反对和其他表态（类似 Github Issue）
+- [ ] 不同分区（类似 V2EX）
+- [x] 帖子无跳转，可直接展开（类似知乎网页版）
+- [ ] 可选自动加载（类似 Pixiv）
+- [ ] 管理员机制
 
 以下为有空也不一定做的功能：
 
@@ -33,10 +33,32 @@
 ## 技术
 
 1. HTML5 + CSS3
-3. JavaScript（暂定 Vue.js）
+3. Vue2 + Vue Router + Axios
 4. Node.js + Express.js
 5. MongoDB
+
+## 部署
+
+1. 安装 Node.js 和 NPM
+
+2. Git 或者下载所有文件
+
+   ```
+   git clone git@github.com:Lifeni/see-you-next-id.git
+   ```
+
+3. 解压或直接进入目录 see-you-next-id
+
+4. 开发环境部署
+
+   ```
+   npm install
+   npm run dev
+   ```
+
+5. 浏览器打开 http://localhost:8080/#/
 
 ## 开源协议
 
 MIT License
+
