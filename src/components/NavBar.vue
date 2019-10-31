@@ -1,8 +1,8 @@
 <template>
     <div id="NavBar">
-        <button class="node current-node">全部</button>
-        <button class="node">热门</button>
-        <button class="talk">+ 发言</button>
+        <button class="node current-node">🕗 时间线</button>
+        <button class="node">🔥 热门</button>
+        <button class="talk">💬 发言</button>
     </div>
 </template>
 
@@ -32,6 +32,7 @@ export default {
     margin: 0 4px;
     padding: 4px 12px;
     border: none;
+    border-radius: 0;
     text-align: center;
     font-size: 16px;
     font-family: 'Noto Serif SC', serif;
@@ -58,6 +59,7 @@ export default {
     margin: 0 4px;
     padding: 4px 12px;
     border: none;
+    border-radius: 0;
     text-align: center;
     font-size: 16px;
     font-family: 'Noto Serif SC', serif;

@@ -1,7 +1,7 @@
 <template>
     <div id="PostList">
         <div class="post" v-for="(post, index) in posts" :key="post.title">
-            <div class="title">[示例]{{post.title}}</div>
+            <div class="title">[示例] {{post.title}}</div>
             <div class="author">{{post.author}}</div>
             <div class="date">{{post.date}}</div>
             <div class="reply-count">{{post.reply_count + " 条回应"}}</div>
@@ -25,7 +25,7 @@
                 <div class="reply-text">
                     <textarea name="reply" class="input-box" cols="50" rows="2" placeholder="你的回应："></textarea>
                     <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
-                    <button class="send-reply">+ 回应</button>
+                    <button class="send-reply">回应</button>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@ export default {
         getData() {
             this.$http({
                 // $http 在 main.js 文件里用实例属性进行替换
-                url: "http://127.0.0.1:8080/static/test.json",
+                url: "/static/test.json",
                 method: "get",
                 params: {
                     page: 3,
@@ -205,6 +205,7 @@ export default {
     background-color: white;
     font-size: 16px;
     font-family: "Noto Serif SC", serif;
+    resize: none;
 }
 
 .reply-tips {
