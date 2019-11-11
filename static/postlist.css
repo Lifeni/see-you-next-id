@@ -1,0 +1,316 @@
+#PostList {
+  position: relative;
+  width: 100%;
+  height: auto;
+  animation: opacity-show 0.4s;
+}
+
+
+.post-tips {
+  width: 100%;
+  height: auto;
+  margin: 12px 0;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
+  background-color: white;
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+}
+
+.post-tips-close {
+  margin: 0;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 2px;
+  background-color: rgba(245, 245, 245, 1);
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  cursor: pointer;
+}
+
+.node-bar {
+  /* position: fixed;
+    top: 40%;
+    left: 48px; */
+  width: 100%;
+  height: auto;
+  margin: 12px 0;
+  padding: 4px 12px;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
+  background-color: white;
+  overflow: auto hidden;
+  white-space: nowrap;
+
+  /* transform: rotate(-90deg); */
+}
+
+.node {
+  margin: 8px 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 2px;
+  background-color: white;
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  cursor: pointer;
+  outline: none;
+}
+
+.node:hover {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.current-node {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.description {
+  width: auto;
+  height: auto;
+  margin: 0 0 8px 0;
+  padding: 4px 8px;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
+  font-family: "Noto Serif SC", serif;
+}
+
+.post {
+  width: 100%;
+  height: auto;
+  margin: 12px 0;
+  padding: 16px 18px;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
+  background-color: white;
+}
+
+.post-default {
+  width: 100%;
+  height: auto;
+  margin: 12px 0;
+  padding: 16px 18px;
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  text-align: center;
+}
+
+.title {
+  margin: 4px;
+  font-size: 20px;
+  font-family: "Noto Serif SC", serif;
+  font-weight: bold;
+}
+
+.post-node,
+.post-author,
+.post-date,
+.reply-count,
+.view-count {
+  margin: 4px;
+  display: inline-block;
+  font-size: 14px;
+  font-family: "Noto Serif SC", serif;
+  color: rgba(117, 117, 117, 1);
+}
+
+.post-content {
+  margin: 8px 4px;
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.post-content:hover {
+  color: rgba(97, 97, 97, 1);
+  cursor: pointer;
+}
+
+.expand {
+  color: black !important;
+  cursor: unset !important;
+  -webkit-box-orient: unset;
+  -webkit-line-clamp: unset;
+}
+
+.get-emoji,
+.show-reply {
+  margin: 8px 4px 0 4px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 2px;
+  background-color: rgba(245, 245, 245, 1);
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  cursor: pointer;
+}
+
+.emoji {
+  display: inline-block;
+  margin: 8px 4px 0 4px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 16px;
+  font-family: "Barlow", sans-serif;
+  animation: opacity-show 0.4s;
+}
+
+.added {
+  background-color: rgba(245, 245, 245, 1);
+  animation: scale-show 0.4s;
+}
+
+.replies {
+  margin: 8px 0 0 0;
+  animation: opacity-show 0.1s;
+}
+
+.reply {
+  margin: 8px 4px;
+  padding: 8px 12px;
+  border-radius: 2px;
+  background-color: rgba(245, 245, 245, 1);
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+}
+
+.reply-id,
+.reply-author,
+.reply-date,
+.reply-like {
+  margin: 4px;
+  display: inline-block;
+  font-size: 14px;
+  font-family: "Noto Serif SC", serif;
+  color: rgba(117, 117, 117, 1);
+}
+
+.reply-content {
+  width: 100%;
+  padding: 4px;
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.reply-text {
+  position: relative;
+  padding: 0 4px;
+}
+
+.input-box {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid rgba(245, 245, 245, 1);
+  border-radius: 2px;
+  background-color: white;
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  resize: none;
+}
+
+.reply-tips {
+  margin: 4px 0;
+  padding: 6px 8px;
+  display: inline-block;
+  font-size: 14px;
+  font-family: "Noto Serif SC", serif;
+  color: rgba(117, 117, 117, 1);
+}
+
+.send-reply {
+  position: absolute;
+  bottom: 0;
+  right: 4px;
+  margin: 4px 0;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 2px;
+  background-color: rgba(245, 245, 245, 1);
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  cursor: pointer;
+}
+
+.emoji-box {
+  margin: 8px 4px;
+  padding: 4px 4px;
+  display: flex;
+  align-items: center;
+  border: 2px solid rgba(245, 245, 245, 1);
+  border-radius: 2px;
+  background-color: white;
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  overflow: auto hidden;
+  white-space: nowrap;
+  animation: opacity-show 0.4s;
+}
+
+.add-emoji {
+  margin: 4px;
+  padding: 8px;
+  display: inline-block;
+  border: none;
+  border-radius: 2px;
+  font-size: 18px;
+  font-family: "Noto Serif SC", serif;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.add-emoji:hover {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.add-emoji:active {
+  background-color: rgba(224, 224, 224, 1);
+}
+
+.emoji-selected {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+@keyframes opacity-show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-show {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .node {
+    margin: 8px 4px;
+  }
+
+  .description {
+    display: none;
+  }
+}

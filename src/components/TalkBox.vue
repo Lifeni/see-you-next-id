@@ -1,11 +1,15 @@
 <template>
     <div id="TalkBox">
+        <span class="select-tips">选择一个节点：</span>
+        <select name="select-node" id="select" class="select-node">
+            <option :value="node.key" v-for="node in inputNode" :key="node.id">{{node.name}}</option>
+        </select>
         <textarea name="input-title" class="input-box-title" cols="30" rows="1" placeholder="标题"></textarea>
         <textarea
             name="input-content"
             class="input-box-content"
             cols="30"
-            rows="3"
+            rows="6"
             placeholder="内容"
         ></textarea>
         <div class="talk-tips">请友善发言，不合适的言论将会被删除。</div>
@@ -17,12 +21,26 @@
 export default {
     name: "TalkBox",
     data() {
-        return {};
+        return {
+            inputNode: []
+        };
+    },
+    methods: {
+        getInputNode() {
+            this.inputNode = this.$store.state.info.node.filter(
+                node => node.id > 0
+            );
+        }
+    },
+    mounted() {
+        setTimeout(() => {
+            this.getInputNode();
+        }, 100);
     }
 };
 </script>
 
-<style scoped>
+<style>
 #TalkBox {
     position: relative;
     width: 100%;
@@ -31,6 +49,8 @@ export default {
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
     background-color: white;
+    animation: opacity-show 0.4s;
+    overflow: hidden;
 }
 
 .input-box-title,
@@ -45,7 +65,6 @@ export default {
     font-family: "Noto Serif SC", serif;
     resize: none;
 }
-
 
 .talk-tips {
     margin: 4px 0;
@@ -70,4 +89,22 @@ export default {
     cursor: pointer;
 }
 
+.select-tips {
+    margin: 8px 0;
+    padding: 6px 8px;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "Noto Serif SC", serif;
+}
+
+.select-node {
+    margin: 4px 0;
+    padding: 4px 8px;
+    border: 2px solid rgba(245, 245, 245, 1);
+    border-radius: 2px;
+    background-color: white;
+    font-size: 16px;
+    font-family: "Noto Serif SC", serif;
+    animation: opacity-show 0.4s;
+}
 </style>
