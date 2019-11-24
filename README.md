@@ -12,13 +12,14 @@
 
 计划提供（可能）以下功能：
 
-- [ ] 第三方登录（暂定 Github）
+- [ ] ~~第三方登录（暂定 Github）~~
+
 - [ ] 发帖（暂定只包含文字）
 - [ ] 回应（同上）
 - [ ] 赞同、反对和其他表态（类似 Github Issue）
-- [ ] 不同分区（类似 V2EX）
+- [x] 不同分区（类似 V2EX）
 - [x] 帖子无跳转，可直接展开（类似知乎网页版）
-- [ ] 可选自动加载（类似 Pixiv）
+- [ ] ~~可选自动加载（类似 Pixiv）~~
 
 以下为有空也不一定做的功能：
 
@@ -33,7 +34,7 @@
 ## 技术
 
 1. HTML5 + CSS3
-3. Vue2 + Vue Router + Axios
+3. Vue2 + Vuex + Vue Router + Axios
 4. Node.js + Express.js
 5. MongoDB
 6. Webpack
@@ -62,4 +63,3 @@
 ## 开源协议
 
 MIT License
-

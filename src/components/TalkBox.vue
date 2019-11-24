@@ -1,19 +1,35 @@
 <template>
     <div id="TalkBox">
-        <span class="select-tips">选择一个节点：</span>
-        <select name="select-node" id="select" class="select-node">
-            <option :value="node.key" v-for="node in inputNode" :key="node.id">{{node.name}}</option>
-        </select>
-        <textarea name="input-title" class="input-box-title" cols="30" rows="1" placeholder="标题"></textarea>
-        <textarea
-            name="input-content"
-            class="input-box-content"
-            cols="30"
-            rows="6"
-            placeholder="内容"
-        ></textarea>
-        <div class="talk-tips">请友善发言，不合适的言论将会被删除。</div>
-        <button class="send-talk">发送</button>
+        <form
+            action="https://api.lifeni.top/talk"
+            method="post"
+            target="temp-iframe"
+            @submit="submitTalk()"
+        >
+            <span class="select-tips">选择一个节点：</span>
+            <select name="select-node" id="select" class="select-node">
+                <option :value="node.key" v-for="node in inputNode" :key="node.id">{{node.name}}</option>
+            </select>
+            <textarea
+                name="input-title"
+                class="input-box-title"
+                cols="30"
+                rows="1"
+                placeholder="标题"
+                minlength="5"
+                required
+            ></textarea>
+            <textarea
+                name="input-content"
+                class="input-box-content"
+                cols="30"
+                rows="6"
+                placeholder="内容"
+            ></textarea>
+            <div class="talk-tips">请友善发言，不合适的言论将会被删除。</div>
+            <button type="submit" class="send-talk">{{sendInfo}}</button>
+        </form>
+        <iframe src="/" frameborder="0" name="temp-iframe" style="display:none;"></iframe>
     </div>
 </template>
 
@@ -22,7 +38,8 @@ export default {
     name: "TalkBox",
     data() {
         return {
-            inputNode: []
+            inputNode: [],
+            sendInfo: "发送"
         };
     },
     methods: {
@@ -30,6 +47,9 @@ export default {
             this.inputNode = this.$store.state.info.node.filter(
                 node => node.id > 0
             );
+        },
+        submitTalk() {
+            this.sendInfo = "发送成功";
         }
     },
     mounted() {

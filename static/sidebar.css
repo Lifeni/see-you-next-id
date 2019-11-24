@@ -5,33 +5,38 @@
   animation: opacity-show 0.4s;
 }
 
-.user {
+.user-login,
+.user-logged,
+.user-logout {
   width: 100%;
   height: auto;
   margin: 12px 0;
-  padding: 12px 0;
+  padding: 12px 12px;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
   background-color: white;
 }
 
 .welcome {
-  margin: 4px 0;
+  margin: 4px 0 0 0;
   font-size: 16px;
   font-family: "Noto Serif SC", serif;
+  text-align: center;
 }
 
-.user-name {
+.user-name,
+.logout-tips {
   width: 100%;
-  margin: 4px 0;
-  font-size: 24px;
+  margin: 12px 0;
+  font-size: 20px;
   font-family: "Noto Serif SC", serif;
   font-weight: bold;
+  text-align: center;
   overflow-wrap: break-word;
 }
 
-.login-github,
-.login-unknown {
+.login-unknown,
+.logout {
   width: 100%;
   height: 40px;
   display: flex;
@@ -46,9 +51,16 @@
   cursor: pointer;
 }
 
-.login-github:hover,
 .login-unknown:hover {
   background-color: rgba(245, 245, 245, 1);
+}
+
+.logout {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.logout:hover {
+  background-color: rgba(224, 224, 224, 1);
 }
 
 .info,

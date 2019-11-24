@@ -5,10 +5,24 @@ Vue.use(Vuex)
 
 const state = {
     info: {},
+    isLogin: 0,
+    userId: 0
 }
 
 export default new Vuex.Store({
     state,
-    actions: {},
-    mutations: {},
+    actions: {
+
+    },
+    mutations: {
+        login(state) {
+            state.isLogin = 1;
+        },
+        logout(state) {
+            state.isLogin = -1;
+        },
+        setUserId(state, id) {
+            state.userId = id
+        }
+    },
 })

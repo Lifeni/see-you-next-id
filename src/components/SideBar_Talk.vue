@@ -12,7 +12,7 @@
             <p>3. 输入具体的内容，如果你的事能在标题里讲完，那就不必写内容。</p>
             <p>4. 建议在三行以内写完你的内容，不要问为什么。</p>
         </div>
-        <div class="love">Made with ❤ in Harbin.</div>
+        <div class="love" v-show="0">Made with ❤ in Harbin.</div>
     </div>
 </template>
 

@@ -48,9 +48,24 @@
                     <div class="reply-content">{{reply.content}}</div>
                 </div>
                 <div class="reply-text">
-                    <textarea name="reply" class="input-box" cols="50" rows="2" placeholder="你的回应："></textarea>
-                    <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
-                    <button class="send-reply">回应</button>
+                    <form
+                        action="https:api.lifeni.top/reply"
+                        method="post"
+                        target="temp-iframe"
+                        @submit="submitReply(index)"
+                    >
+                        <textarea
+                            name="reply"
+                            class="input-box"
+                            cols="50"
+                            rows="2"
+                            required
+                            placeholder="你的回应："
+                        ></textarea>
+                        <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
+                        <button class="send-reply" type="submit">回应{{sendInfo[index]}}</button>
+                    </form>
+                    <iframe src="/" frameborder="0" name="temp-iframe" style="display:none;"></iframe>
                 </div>
             </div>
         </div>
@@ -69,14 +84,15 @@ export default {
             showReplyFlag: [],
             showAddEmojiFlag: [],
             currentNode: 0,
-            currentNodeDescription: "按照时间顺序展示，最新发布的在最上面。"
+            currentNodeDescription: "按照时间顺序展示，最新发布的在最上面。",
+            sendInfo: []
         };
     },
     methods: {
         getPost() {
             this.$http({
                 // $http 在 main.js 文件里用实例属性进行替换
-                url: "/static/timeline.json",
+                url: "/static/post_all.json",
                 method: "get"
             })
                 .then(response => {
@@ -140,6 +156,9 @@ export default {
             this.currentNodeDescription = this.info.node[
                 this.currentNode
             ].description;
+        },
+        submitReply(index) {
+            this.$set(this.sendInfo, index, "成功");
         }
     },
     computed: mapState(["info"]),
