@@ -41,9 +41,24 @@
                     <div class="reply-content">{{reply.content}}</div>
                 </div>
                 <div class="reply-text">
-                    <textarea name="reply" class="input-box" cols="50" rows="2" placeholder="你的回应："></textarea>
-                    <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
-                    <button class="send-reply">回应</button>
+                    <form
+                        action="https:api.lifeni.top/reply"
+                        method="post"
+                        target="temp-iframe"
+                        @submit="submitReply(index)"
+                    >
+                        <textarea
+                            name="reply"
+                            class="input-box"
+                            cols="50"
+                            rows="2"
+                            required
+                            placeholder="你的回应："
+                        ></textarea>
+                        <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
+                        <button class="send-reply" type="submit">回应{{sendInfo[index]}}</button>
+                    </form>
+                    <iframe src="/" frameborder="0" name="temp-iframe" style="display:none;"></iframe>
                 </div>
             </div>
         </div>
@@ -60,7 +75,8 @@ export default {
             posts: [],
             showReplyFlag: [],
             showAddEmojiFlag: [],
-            postTipsClosed: 0
+            postTipsClosed: 0,
+            sendInfo: []
         };
     },
     methods: {
@@ -108,6 +124,9 @@ export default {
             this.$el.children[postId + 1]
                 .getElementsByClassName("emoji")
                 [emojiId].classList.toggle("emoji-selected");
+        },
+        submitReply(index) {
+            this.$set(this.sendInfo, index, "成功");
         }
     },
     computed: mapState(["info"]),
