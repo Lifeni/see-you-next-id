@@ -45,7 +45,16 @@ export default {
     methods: {
         getId() {
             this.$store.commit("login");
-            this.$store.commit("setUserId", 12135);
+            this.$http({
+                url: "https://api.lifeni.top/id",
+                method: "get"
+            })
+                .then(response => {
+                    this.$store.commit("setUserId", response.data);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         },
         exitId() {
             this.$store.commit("logout");

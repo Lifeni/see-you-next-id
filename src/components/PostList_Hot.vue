@@ -7,7 +7,7 @@
         <div class="post" v-for="(post, index) in posts" :key="post.id">
             <div class="title">[示例] {{post.title}}</div>
             <div class="post-node">{{post.node}}</div>
-            <div class="post-author">{{post.author}}</div>
+            <div class="post-author">匿名用户#{{post.author}}</div>
             <div class="post-date">{{post.date}}</div>
             <div class="reply-count">{{post.reply.length + " 条回应"}}</div>
             <div class="post-content" v-html="post.content" @click="expandPost(index)"></div>
@@ -36,7 +36,7 @@
             <div class="replies" v-if="showReplyFlag[index]">
                 <div class="reply" v-for="reply in post.reply" :key="reply.id">
                     <div class="reply-id">#{{parseInt(reply.id) + 1}}</div>
-                    <div class="reply-author">{{reply.author}}</div>
+                    <div class="reply-author">匿名用户#{{reply.author}}</div>
                     <div class="reply-date">{{reply.date}}</div>
                     <div class="reply-content">{{reply.content}}</div>
                 </div>
@@ -83,8 +83,11 @@ export default {
         getPost() {
             this.$http({
                 // $http 在 main.js 文件里用实例属性进行替换
-                url: "/static/post_hot.json",
-                method: "get"
+                url: "https://api.lifeni.top/post",
+                method: "get",
+                params: {
+                    node: "hot"
+                }
             })
                 .then(response => {
                     this.posts = response.data;

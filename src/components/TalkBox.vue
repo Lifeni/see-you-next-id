@@ -1,57 +1,94 @@
 <template>
     <div id="TalkBox">
-        <form
-            action="https://api.lifeni.top/talk"
-            method="post"
-            target="temp-iframe"
-            @submit="submitTalk()"
-        >
+        <form>
             <span class="select-tips">选择一个节点：</span>
-            <select name="select-node" id="select" class="select-node">
+            <select name="node" id="select" class="select-node" v-model="talkNode">
                 <option :value="node.key" v-for="node in inputNode" :key="node.id">{{node.name}}</option>
             </select>
             <textarea
-                name="input-title"
+                name="title"
                 class="input-box-title"
                 cols="30"
                 rows="1"
                 placeholder="标题"
-                minlength="5"
                 required
+                v-model="talkTitle"
             ></textarea>
             <textarea
-                name="input-content"
+                name="content"
                 class="input-box-content"
                 cols="30"
                 rows="6"
                 placeholder="内容"
+                v-model="talkContent"
             ></textarea>
             <div class="talk-tips">请友善发言，不合适的言论将会被删除。</div>
-            <button type="submit" class="send-talk">{{sendInfo}}</button>
+            <button type="button" class="send-talk" @click="submitTalk()">{{sendInfo}}</button>
         </form>
-        <iframe src="/" frameborder="0" name="temp-iframe" style="display:none;"></iframe>
     </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
     name: "TalkBox",
     data() {
         return {
             inputNode: [],
+            talkNode: "",
+            talkTitle: "",
+            talkContent: "",
             sendInfo: "发送"
         };
     },
     methods: {
         getInputNode() {
-            this.inputNode = this.$store.state.info.node.filter(
-                node => node.id > 0
-            );
+            setTimeout(() => {
+                this.inputNode = this.$store.state.info.node.filter(
+                    node => node.id > 0
+                );
+            }, 500);
         },
         submitTalk() {
-            this.sendInfo = "发送成功";
+            if (this.isLogin != 1) {
+                alert("未登录");
+                return;
+            }
+            if (this.sendInfo == "发送成功") {
+                alert("请勿重复发送");
+                return;
+            }
+            if (this.talkNode == "") {
+                alert("请选择节点");
+                return;
+            }
+            if (this.talkTitle.length < 5) {
+                alert("标题应不少于五个字");
+                return;
+            }
+
+            this.$http({
+                url: "https://api.lifeni.top/talk",
+                method: "post",
+                data: {
+                    user: this.userId,
+                    node: this.talkNode,
+                    title: this.talkTitle,
+                    content: this.talkContent
+                }
+            })
+                .then(response => {
+                    if (response.data == "ok") {
+                        this.sendInfo = "发送成功";
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         }
     },
+    computed: mapState(["isLogin", "userId"]),
     mounted() {
         setTimeout(() => {
             this.getInputNode();

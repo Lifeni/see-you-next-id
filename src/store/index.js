@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const state = {
     info: {},
     isLogin: 0,
-    userId: 0
+    userId: "----"
 }
 
 export default new Vuex.Store({

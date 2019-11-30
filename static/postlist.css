@@ -10,7 +10,7 @@
   width: 100%;
   height: auto;
   margin: 12px 0;
-  padding: 16px 22px;
+  padding: 18px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,6 +22,10 @@
 }
 
 .post-tips-close {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  min-width: 64px;
   margin: 0;
   padding: 4px 8px;
   border: none;
@@ -87,6 +91,8 @@
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
   background-color: white;
+  animation: opacity-show 0.4s;
+
 }
 
 .post-default {
@@ -157,16 +163,10 @@
 .emoji {
   display: inline-block;
   margin: 8px 4px 0 4px;
-  padding: 4px 8px;
+  padding: 5px 8px;
   border-radius: 2px;
   font-size: 16px;
   font-family: "Barlow", sans-serif;
-  animation: opacity-show 0.4s;
-}
-
-.added {
-  background-color: rgba(245, 245, 245, 1);
-  animation: scale-show 0.4s;
 }
 
 .replies {
@@ -279,6 +279,7 @@
 
 .emoji-selected {
   background-color: rgba(245, 245, 245, 1);
+  animation: scale-show 0.4s;
 }
 
 @keyframes opacity-show {
@@ -313,4 +314,5 @@
   .description {
     display: none;
   }
+
 }

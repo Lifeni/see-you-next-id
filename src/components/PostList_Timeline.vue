@@ -14,7 +14,7 @@
         </div>
         <div class="post" v-for="(post, index) in posts" :key="post.id">
             <div class="title">[示例] {{post.title}}</div>
-            <div class="post-author">{{post.author}}</div>
+            <div class="post-author">匿名用户#{{post.author}}</div>
             <div class="post-date">{{post.date}}</div>
             <div class="reply-count">{{post.reply.length + " 条回应"}}</div>
             <div class="post-content" v-html="post.content" @click="expandPost(index)"></div>
@@ -43,17 +43,12 @@
             <div class="replies" v-if="showReplyFlag[index]">
                 <div class="reply" v-for="reply in post.reply" :key="reply.id">
                     <div class="reply-id">#{{parseInt(reply.id) + 1}}</div>
-                    <div class="reply-author">{{reply.author}}</div>
+                    <div class="reply-author">匿名用户#{{reply.author}}</div>
                     <div class="reply-date">{{reply.date}}</div>
                     <div class="reply-content">{{reply.content}}</div>
                 </div>
                 <div class="reply-text">
-                    <form
-                        action="https:api.lifeni.top/reply"
-                        method="post"
-                        target="temp-iframe"
-                        @submit="submitReply(index)"
-                    >
+                    <form>
                         <textarea
                             name="reply"
                             class="input-box"
@@ -61,11 +56,15 @@
                             rows="2"
                             required
                             placeholder="你的回应："
+                            v-model="replyContent[index]"
                         ></textarea>
                         <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
-                        <button class="send-reply" type="submit">回应{{sendInfo[index]}}</button>
+                        <button
+                            class="send-reply"
+                            type="button"
+                            @click="submitReply(index,post)"
+                        >回应{{sendInfo[index]}}</button>
                     </form>
-                    <iframe src="/" frameborder="0" name="temp-iframe" style="display:none;"></iframe>
                 </div>
             </div>
         </div>
@@ -75,6 +74,7 @@
 
 <script>
 import { mapState } from "vuex";
+import { all } from "q";
 
 export default {
     name: "PostList",
@@ -85,15 +85,19 @@ export default {
             showAddEmojiFlag: [],
             currentNode: 0,
             currentNodeDescription: "按照时间顺序展示，最新发布的在最上面。",
-            sendInfo: []
+            sendInfo: [],
+            replyContent: []
         };
     },
     methods: {
         getPost() {
             this.$http({
                 // $http 在 main.js 文件里用实例属性进行替换
-                url: "/static/post_all.json",
-                method: "get"
+                url: "https://api.lifeni.top/post",
+                method: "get",
+                params: {
+                    node: "all"
+                }
             })
                 .then(response => {
                     this.posts = response.data;
@@ -138,9 +142,14 @@ export default {
             this.currentNode = index;
             this.showReplyFlag = [];
             this.showAddEmojiFlag = [];
+            this.replyContent = [];
+            this.sendInfo = [];
             this.$http({
-                url: "/static/post_" + this.info.node[index].key + ".json",
-                method: "get"
+                url: "https://api.lifeni.top/post",
+                method: "get",
+                params: {
+                    node: this.info.node[index].key
+                }
             })
                 .then(response => {
                     this.posts = response.data;
@@ -157,11 +166,37 @@ export default {
                 this.currentNode
             ].description;
         },
-        submitReply(index) {
-            this.$set(this.sendInfo, index, "成功");
+        submitReply(index, post) {
+            if (this.isLogin != 1) {
+                alert("未登录");
+                return;
+            }
+            if (this.replyContent.length < 1) {
+                alert("没有内容");
+                return;
+            }
+
+            this.$http({
+                url: "https://api.lifeni.top/reply",
+                method: "post",
+                data: {
+                    user: this.userId,
+                    postId: post.id,
+                    postName: post.title,
+                    content: this.replyContent[index]
+                }
+            })
+                .then(response => {
+                    if (response.data == "ok") {
+                        this.$set(this.sendInfo, index, "成功");
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         }
     },
-    computed: mapState(["info"]),
+    computed: mapState(["info", "isLogin", "userId"]),
     beforeMount() {
         this.getPost();
     },

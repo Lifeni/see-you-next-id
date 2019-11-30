@@ -34,7 +34,7 @@ export default {
         getInfo() {
             this.$http({
                 // $http 在 main.js 文件里用实例属性进行替换
-                url: "/static/info.json",
+                url: "https://api.lifeni.top/info",
                 method: "get"
             })
                 .then(response => {
