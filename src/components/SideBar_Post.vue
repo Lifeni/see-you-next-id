@@ -22,7 +22,7 @@
                     target="_blank"
                 >🔗 Github</a> 查看。
             </p>
-            <p>本网站仅供演示，目前不会记录或储存任何数据。</p>
+            <p>本网站仅供演示。</p>
         </div>
         <div class="guide">
             <h1>使用指导</h1>
