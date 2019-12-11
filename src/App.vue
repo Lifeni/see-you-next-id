@@ -19,7 +19,7 @@
         </div>
         <div id="footer">
             <!-- <span class="footer-text">联系我们</span> -->
-            <a class="footer-text" href="mailto:2072945536@qq.com">联系我们</a>
+            <a class="footer-text" href="mailto:3370085565@qq.com">联系我们</a>
         </div>
     </div>
 </template>
