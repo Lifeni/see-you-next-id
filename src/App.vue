@@ -18,8 +18,8 @@
             </div>
         </div>
         <div id="footer">
-            <span class="footer-text">网页内容均复制自 V2EX，</span>
-            <span class="footer-text">仅供演示，如有侵权请告知。</span>
+            <span class="footer-text">备案号</span>
+            <span class="footer-text">联系我们</span>
         </div>
     </div>
 </template>
