@@ -19,7 +19,7 @@
         </div>
         <div id="footer">
             <!-- <span class="footer-text">联系我们</span> -->
-            <a class="footer-text" href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=2072945536&website=www.oicqzone.com">联系我们</a>
+            <a class="footer-text" href="mailto:2072945536@qq.com">联系我们</a>
         </div>
     </div>
 </template>
