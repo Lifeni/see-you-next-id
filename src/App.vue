@@ -18,8 +18,8 @@
             </div>
         </div>
         <div id="footer">
-            <span class="footer-text">网页内容均复制自 V2EX，</span>
-            <span class="footer-text">仅供演示，如有侵权请告知。</span>
+            <!-- <span class="footer-text">联系我们</span> -->
+            <a class="footer-text" href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=2072945536&website=www.oicqzone.com">联系我们</a>
         </div>
     </div>
 </template>
@@ -222,6 +222,8 @@ button:hover {
 
 .footer-text {
     margin: 2px;
+    text-decoration : none;
+    color:rgba(119,136,153)
 }
 
 .blur {
