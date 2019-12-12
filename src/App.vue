@@ -2,7 +2,11 @@
     <div id="app">
         <div id="header">
             下个 ID 见
-            <span class="dev">开发版</span>
+            <!-- <span class="dev">开发版</span> -->
+            <button class="menu" @click="showSideBar()" :class="{'menu-open':showSideBarFlag}"></button>
+            <span class="login-info" v-show="isLogin==0">未登录</span>
+            <span class="login-info" v-show="isLogin==1">#{{userId}}</span>
+            <span class="login-info" v-show="isLogin==-1">已注销</span>
         </div>
         <div id="content">
             <div id="left">
@@ -13,22 +17,26 @@
                 </div>
                 <router-view name="MainContent"></router-view>
             </div>
-            <div id="right">
+            <div id="right" v-show="screenWidth>768||showSideBarFlag">
                 <router-view name="SideBar"></router-view>
             </div>
         </div>
         <div id="footer">
-            <!-- <span class="footer-text">联系我们</span> -->
-            <a class="footer-text" href="mailto:3370085565@qq.com">联系我们</a>
+            <span class="footer-text">本网站仅供演示。</span>
         </div>
     </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
     name: "App",
     data() {
-        return {};
+        return {
+            screenWidth: document.body.clientWidth,
+            showSideBarFlag: 0
+        };
     },
     methods: {
         getInfo() {
@@ -43,7 +51,20 @@ export default {
                 .catch(function(error) {
                     console.log(error);
                 });
+        },
+        showSideBar() {
+            this.showSideBarFlag = !this.showSideBarFlag;
         }
+    },
+    computed: mapState(["isLogin", "userId"]),
+    mounted() {
+        const that = this;
+        window.onresize = () => {
+            return (() => {
+                window.screenWidth = document.body.clientWidth;
+                that.screenWidth = window.screenWidth;
+            })();
+        };
     },
     beforeMount() {
         this.getInfo();
@@ -106,6 +127,41 @@ button:hover {
     font-family: "Noto Serif SC", serif;
     font-weight: normal;
     text-align: center;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 64px;
+    display: none;
+    border: none;
+    background-color: transparent;
+    background-image: url("../static/menu.svg");
+    background-position: center;
+    background-size: 24px;
+    background-repeat: no-repeat;
+}
+
+.menu-open {
+    background-image: url("../static/close.svg");
+}
+
+.menu:hover {
+    background-color: rgba(189, 189, 189, 1);
+}
+
+.login-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: 64px;
+    padding: 16px 24px;
+    display: none;
+    font-size: 16px;
+    font-family: "Noto Serif SC", serif;
 }
 
 #content {
@@ -222,8 +278,8 @@ button:hover {
 
 .footer-text {
     margin: 2px;
-    text-decoration : none;
-    color:rgba(119,136,153)
+    text-decoration: none;
+    color: rgba(119, 136, 153);
 }
 
 .blur {
@@ -242,7 +298,7 @@ button:hover {
 @media (max-width: 768px) {
     #content {
         width: 96%;
-        flex-direction: column;
+        flex-direction: column-reverse;
         padding: 0 0 84px 0;
     }
 
@@ -258,7 +314,13 @@ button:hover {
 
     #right {
         width: 96%;
-        display: none;
+    }
+
+    .menu,
+    .login-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 </style>

@@ -52,11 +52,55 @@
             ></textarea>
             <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
             <button
-              class="send-reply"
-              type="button"
-              @click="submitReply(index,post)"
-            >回应{{sendInfo[index]}}</button>
-          </form>
+
+                class="show-reply"
+                @click="showReply(index)"
+            >{{showReplyFlag[index]?'收起':'查看'}}回应</button>
+            <button class="get-emoji" @click="showAddEmoji(index)">+ Emoji</button>
+            <div
+                class="emoji"
+                v-for="emoji in info.emoji"
+                :key="emoji.id"
+                v-show="post.emoji[emoji.id]"
+            >
+                {{emoji.code}} ×
+                <span class="emoji-count">{{post.emoji[emoji.id]}}</span>
+            </div>
+            <div class="emoji-box" v-if="showAddEmojiFlag[index]">
+                <button
+                    class="add-emoji"
+                    v-for="emoji in info.emoji"
+                    :key="emoji.id"
+                    @click="addEmoji(index,emoji.id)"
+                >{{emoji.code}}</button>
+            </div>
+            <div class="replies" v-if="showReplyFlag[index]">
+                <div class="reply" v-for="reply in post.reply" :key="reply.id">
+                    <div class="reply-author">匿名用户#{{reply.author}}</div>
+                    <div class="reply-date">{{reply.date}}</div>
+                    <div class="reply-content">{{reply.content}}</div>
+                </div>
+                <div class="reply-text">
+                    <form>
+                        <textarea
+                            name="reply"
+                            class="input-box"
+                            cols="50"
+                            rows="2"
+                            required
+                            placeholder="你的回应："
+                            v-model="replyContent[index]"
+                        ></textarea>
+                        <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
+                        <button
+                            class="send-reply"
+                            type="button"
+                            @click="submitReply(index,post)"
+                        >回应{{sendInfo[index]}}</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
       </div>
     </div>

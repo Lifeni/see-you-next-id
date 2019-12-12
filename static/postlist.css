@@ -127,13 +127,16 @@
 .post-content {
   margin: 8px 4px;
   font-size: 16px;
+  display: -webkit-box;
   font-family: "Noto Serif SC", serif;
   overflow: hidden;
   white-space: pre-wrap;
   text-overflow: ellipsis;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  box-orient: vertical;
+  line-clamp: 3;
+  overflow-wrap: break-word;
 }
 
 .post-content:hover {
@@ -141,11 +144,22 @@
   cursor: pointer;
 }
 
+.hot-content {
+  margin: 8px 4px;
+  display: block;
+  font-size: 16px;
+  font-family: "Noto Serif SC", serif;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
 .expand {
   color: black !important;
   cursor: unset !important;
   -webkit-box-orient: unset;
   -webkit-line-clamp: unset;
+  box-orient: unset;
+  line-clamp: unset;
 }
 
 .get-emoji,
