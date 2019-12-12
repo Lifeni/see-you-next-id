@@ -6,59 +6,24 @@
         </div>
         <div class="post" v-for="(post, index) in posts" :key="post.id">
             <div class="title">[示例] {{post.title}}</div>
-            <div class="post-node">{{post.node}}</div>
+            <div class="post-node">{{nodeFormat(post.node)}}</div>
             <div class="post-author">匿名用户#{{post.author}}</div>
             <div class="post-date">{{post.date}}</div>
-            <div class="reply-count">{{post.reply.length + " 条回应"}}</div>
-            <div class="post-content" v-html="post.content" @click="expandPost(index)"></div>
-            <button
-                class="show-reply"
-                @click="showReply(index)"
-            >{{showReplyFlag[index]?'收起':'查看'}}回应</button>
-            <button class="get-emoji" @click="showAddEmoji(index)">+ Emoji</button>
+            <div class="hot-content" v-html="post.content" @click="expandPost(index)"></div>
             <div
                 class="emoji"
                 v-for="emoji in info.emoji"
                 :key="emoji.id"
-                v-show="post.emoji[emoji.id]"
+                v-show="post.emoji[emoji.id].count"
             >
                 {{emoji.code}}×
-                <span class="emoji-count">{{post.emoji[emoji.id]}}</span>
+                <span class="emoji-count">{{post.emoji[emoji.id].count}}</span>
             </div>
-            <div class="emoji-box" v-if="showAddEmojiFlag[index]">
-                <button
-                    class="add-emoji"
-                    v-for="emoji in info.emoji"
-                    :key="emoji.id"
-                    @click="addEmoji(index,emoji.id)"
-                >{{emoji.code}}</button>
-            </div>
-            <div class="replies" v-if="showReplyFlag[index]">
+            <div class="replies">
                 <div class="reply" v-for="reply in post.reply" :key="reply.id">
-                    <!-- <div class="reply-id">#{{parseInt(reply.id) + 1}}</div> -->
                     <div class="reply-author">匿名用户#{{reply.author}}</div>
                     <div class="reply-date">{{reply.date}}</div>
                     <div class="reply-content">{{reply.content}}</div>
-                </div>
-                <div class="reply-text">
-                    <form
-                        action="https:api.lifeni.top/reply"
-                        method="post"
-                        target="temp-iframe"
-                        @submit="submitReply(index)"
-                    >
-                        <textarea
-                            name="reply"
-                            class="input-box"
-                            cols="50"
-                            rows="2"
-                            required
-                            placeholder="你的回应："
-                        ></textarea>
-                        <div class="reply-tips">请友善发言，不合适的言论将会被删除。</div>
-                        <button class="send-reply" type="submit">回应{{sendInfo[index]}}</button>
-                    </form>
-                    <iframe src="/" frameborder="0" name="temp-iframe" style="display:none;"></iframe>
                 </div>
             </div>
         </div>
@@ -73,10 +38,7 @@ export default {
     data() {
         return {
             posts: [],
-            showReplyFlag: [],
-            showAddEmojiFlag: [],
-            postTipsClosed: 0,
-            sendInfo: []
+            postTipsClosed: 0
         };
     },
     methods: {
@@ -96,50 +58,23 @@ export default {
                     console.log(error);
                 });
         },
-        expandPost(index) {
-            this.$el.children[index + 1]
-                .getElementsByClassName("post-content")[0]
-                .classList.add("expand");
-        },
-        showReply(index) {
-            // 这样写是因为 Vue 在改变数组后不会改变 DOM
-            this.$set(this.showReplyFlag, index, !this.showReplyFlag[index]);
-        },
-        showAddEmoji(index) {
-            this.$set(
-                this.showAddEmojiFlag,
-                index,
-                !this.showAddEmojiFlag[index]
-            );
-        },
-        addEmoji(postId, emojiId) {
-            let temp = this.$el.children[postId + 1]
-                .getElementsByClassName("emoji")
-                [emojiId].classList.contains("emoji-selected")
-                ? -1
-                : 1;
-
-            this.$set(
-                this.posts[postId].emoji,
-                emojiId,
-                this.posts[postId].emoji[emojiId] + temp
-            );
-            this.$el.children[postId + 1]
-                .getElementsByClassName("emoji")
-                [emojiId].classList.toggle("emoji-selected");
-        },
-        submitReply(index) {
-            this.$set(this.sendInfo, index, "成功");
+        nodeFormat(node) {
+            const code = {
+                tech: "技术",
+                idea: "创意",
+                share: "分享",
+                nearby: "附近",
+                notice: "通知",
+                qa: "问答"
+            };
+            return code[node];
         }
     },
-    computed: mapState(["info"]),
+    computed: mapState(["info", "isLogin", "userId"]),
     beforeMount() {
         this.getPost();
     },
-    mounted() {
-        this.showReplyFlag.fill(0);
-        this.showAddEmojiFlag.fill(0);
-    }
+    mounted() {}
 };
 </script>
 
