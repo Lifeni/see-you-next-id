@@ -27,10 +27,10 @@
                 class="emoji"
                 v-for="emoji in info.emoji"
                 :key="emoji.id"
-                v-show="post.emoji[emoji.id]"
+                v-show="post.emoji[emoji.id].count"
             >
                 {{emoji.code}} ×
-                <span class="emoji-count">{{post.emoji[emoji.id]}}</span>
+                <span class="emoji-count">{{post.emoji[emoji.id].count}}</span>
             </div>
             <div class="emoji-box" v-if="showAddEmojiFlag[index]">
                 <button
@@ -128,14 +128,31 @@ export default {
                 ? -1
                 : 1;
 
-            this.$set(
-                this.posts[postId].emoji,
-                emojiId,
-                this.posts[postId].emoji[emojiId] + temp
-            );
-            this.$el.children[postId + 1]
-                .getElementsByClassName("emoji")
-                [emojiId].classList.toggle("emoji-selected");
+            if (this.isLogin != 1) {
+                alert("未登录");
+                return;
+            }
+            this.$http({
+                url: "https://api.lifeni.top/emoji",
+                method: "post",
+                data: {
+                    user: this.userId,
+                    postId: this.posts[postId].id,
+                    emojiId: emojiId,
+                    value: temp
+                }
+            })
+                .then(response => {
+                    this.posts[postId].emoji[emojiId].count += temp;
+                    console.log(temp);
+
+                    this.$el.children[postId + 1]
+                        .getElementsByClassName("emoji")
+                        [emojiId].classList.toggle("emoji-selected");
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         },
         showNodeContent(index) {
             this.currentNode = index;
