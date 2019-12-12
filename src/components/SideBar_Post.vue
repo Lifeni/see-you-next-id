@@ -15,14 +15,23 @@
             <h1>介绍</h1>
             <p>下个 ID 见！这是一个论坛项目。</p>
             <p>
-                有关这个项目的更多信息可以去
+                前端：Vue.js
+                <br />后端：Express.js
+                <br />数据库：MongoDB
+            </p>
+            <p>
                 <a
-                    href="https://github.com/Lifeni/see-you-next-id"
                     class="link"
                     target="_blank"
-                >🔗 Github</a> 查看。
+                    href="https://github.com/Lifeni/see-you-next-id"
+                >🔗 前端项目地址</a>
+                <br>
+                <a
+                    class="link"
+                    target="_blank"
+                    href="https://github.com/Lifeni/see-you-next-id-api"
+                >🔗 后端项目地址</a>
             </p>
-            <p>本网站仅供演示。</p>
         </div>
         <div class="guide">
             <h1>使用指导</h1>

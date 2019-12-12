@@ -181,6 +181,7 @@ export default {
 }
 
 .select-node {
+    width: 100px;
     margin: 4px 0;
     padding: 4px 8px;
     border: 2px solid rgba(245, 245, 245, 1);

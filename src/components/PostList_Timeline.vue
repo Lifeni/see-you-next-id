@@ -42,7 +42,6 @@
             </div>
             <div class="replies" v-if="showReplyFlag[index]">
                 <div class="reply" v-for="reply in post.reply" :key="reply.id">
-                    <!-- <div class="reply-id">#{{parseInt(reply.id) + 1}}</div> -->
                     <div class="reply-author">匿名用户#{{reply.author}}</div>
                     <div class="reply-date">{{reply.date}}</div>
                     <div class="reply-content">{{reply.content}}</div>
