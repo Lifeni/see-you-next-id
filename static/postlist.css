@@ -3,8 +3,13 @@
   width: 100%;
   height: auto;
   animation: opacity-show 0.4s;
+  font-family: 'Noto Serif SC', '思源宋体 CN', 'Source Han Serif SC', sans-serif;
 }
 
+button,
+textarea {
+  font-family: 'Noto Serif SC', '思源宋体 CN', 'Source Han Serif SC', sans-serif;
+}
 
 .post-tips {
   width: 100%;
@@ -18,7 +23,7 @@
   box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
   background-color: white;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
+
 }
 
 .post-tips-close {
@@ -32,7 +37,6 @@
   border-radius: 2px;
   background-color: rgba(245, 245, 245, 1);
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
   cursor: pointer;
 }
 
@@ -48,8 +52,10 @@
   box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
   background-color: white;
   overflow: auto hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
-
+  overflow-wrap: break-word;
   /* transform: rotate(-90deg); */
 }
 
@@ -60,7 +66,6 @@
   border-radius: 2px;
   background-color: white;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
   cursor: pointer;
   outline: none;
 }
@@ -80,7 +85,6 @@
   padding: 4px 8px;
   border-radius: 0 0 2px 2px;
   font-size: 14px;
-  font-family: "Noto Serif SC", serif;
 }
 
 .post {
@@ -92,7 +96,6 @@
   box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
   background-color: white;
   animation: opacity-show 0.4s;
-
 }
 
 .post-default {
@@ -101,14 +104,12 @@
   margin: 12px 0;
   padding: 16px 18px;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
   text-align: center;
 }
 
 .title {
   margin: 4px;
   font-size: 20px;
-  font-family: "Noto Serif SC", serif;
   font-weight: bold;
 }
 
@@ -120,7 +121,7 @@
   margin: 4px;
   display: inline-block;
   font-size: 14px;
-  font-family: "Noto Serif SC", serif;
+
   color: rgba(117, 117, 117, 1);
 }
 
@@ -128,7 +129,7 @@
   margin: 8px 4px;
   font-size: 16px;
   display: -webkit-box;
-  font-family: "Noto Serif SC", serif;
+
   overflow: hidden;
   white-space: pre-wrap;
   text-overflow: ellipsis;
@@ -148,7 +149,7 @@
   margin: 8px 4px;
   display: block;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
+
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
@@ -170,7 +171,6 @@
   border-radius: 2px;
   background-color: rgba(245, 245, 245, 1);
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
   cursor: pointer;
 }
 
@@ -180,7 +180,7 @@
   padding: 5px 8px;
   border-radius: 2px;
   font-size: 16px;
-  font-family: "Barlow", sans-serif;
+  font-family: 'Barlow', sans-serif;
 }
 
 .replies {
@@ -194,7 +194,6 @@
   border-radius: 2px;
   background-color: rgba(245, 245, 245, 1);
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
 }
 
 .reply-id,
@@ -204,7 +203,6 @@
   margin: 4px;
   display: inline-block;
   font-size: 14px;
-  font-family: "Noto Serif SC", serif;
   color: rgba(117, 117, 117, 1);
 }
 
@@ -212,7 +210,6 @@
   width: 100%;
   padding: 4px;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
   overflow: hidden;
   white-space: pre-wrap;
 }
@@ -229,7 +226,6 @@
   border-radius: 2px;
   background-color: white;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
   resize: none;
 }
 
@@ -238,7 +234,7 @@
   padding: 6px 8px;
   display: inline-block;
   font-size: 14px;
-  font-family: "Noto Serif SC", serif;
+
   color: rgba(117, 117, 117, 1);
 }
 
@@ -252,7 +248,7 @@
   border-radius: 2px;
   background-color: rgba(245, 245, 245, 1);
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
+
   cursor: pointer;
 }
 
@@ -265,7 +261,6 @@
   border-radius: 2px;
   background-color: white;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
   overflow: auto hidden;
   white-space: nowrap;
   animation: opacity-show 0.4s;
@@ -278,7 +273,6 @@
   border: none;
   border-radius: 2px;
   font-size: 18px;
-  font-family: "Noto Serif SC", serif;
   background-color: transparent;
   cursor: pointer;
 }

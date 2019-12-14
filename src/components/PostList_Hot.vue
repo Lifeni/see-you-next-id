@@ -16,7 +16,7 @@
                 :key="emoji.id"
                 v-show="post.emoji[emoji.id].count"
             >
-                {{emoji.code}}×
+                {{emoji.code}} ×
                 <span class="emoji-count">{{post.emoji[emoji.id].count}}</span>
             </div>
             <div class="replies">

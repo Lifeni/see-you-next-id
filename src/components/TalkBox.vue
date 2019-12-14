@@ -117,6 +117,14 @@ export default {
     background-color: white;
     animation: opacity-show 0.4s;
     overflow: hidden;
+    font-family: "Noto Serif SC", "思源宋体 CN", "Source Han Serif SC",
+        sans-serif;
+}
+
+button,
+textarea {
+    font-family: "Noto Serif SC", "思源宋体 CN", "Source Han Serif SC",
+        sans-serif;
 }
 
 .noLogin {
@@ -131,9 +139,9 @@ export default {
     justify-content: center;
     font-size: 36px;
     font-weight: bold;
-    font-family: "Noto Serif SC", serif;
+
     color: rgba(117, 117, 117, 1);
-    background-color: rgba(245, 245, 245, .5);
+    background-color: rgba(245, 245, 245, 0.5);
 }
 
 .input-box-title,
@@ -145,7 +153,7 @@ export default {
     border-radius: 2px;
     background-color: white;
     font-size: 16px;
-    font-family: "Noto Serif SC", serif;
+
     resize: none;
 }
 
@@ -154,7 +162,7 @@ export default {
     padding: 6px 8px;
     display: inline-block;
     font-size: 14px;
-    font-family: "Noto Serif SC", serif;
+
     color: rgba(117, 117, 117, 1);
 }
 
@@ -168,7 +176,7 @@ export default {
     border-radius: 2px;
     background-color: rgba(245, 245, 245, 1);
     font-size: 16px;
-    font-family: "Noto Serif SC", serif;
+
     cursor: pointer;
 }
 
@@ -177,7 +185,6 @@ export default {
     padding: 6px 8px;
     display: inline-block;
     font-size: 16px;
-    font-family: "Noto Serif SC", serif;
 }
 
 .select-node {
@@ -188,7 +195,7 @@ export default {
     border-radius: 2px;
     background-color: white;
     font-size: 16px;
-    font-family: "Noto Serif SC", serif;
+
     animation: opacity-show 0.4s;
 }
 </style>

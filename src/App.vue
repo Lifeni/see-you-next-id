@@ -81,6 +81,13 @@ export default {
 body {
     margin: 0;
     overflow-y: scroll;
+    font-family: 'Noto Serif SC','思源宋体 CN','Source Han Serif SC',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+button {
+    font-family: 'Noto Serif SC','思源宋体 CN','Source Han Serif SC',sans-serif;
 }
 
 button:hover {
@@ -112,7 +119,7 @@ button:hover {
     box-shadow: 0 0 16px rgba(224, 224, 224, 1);
     background-color: white;
     font-size: 20px;
-    font-family: "Noto Serif SC", serif;
+
     font-weight: bold;
 }
 
@@ -124,7 +131,7 @@ button:hover {
     border-radius: 2px;
     background-color: rgba(245, 245, 245, 1);
     font-size: 12px;
-    font-family: "Noto Serif SC", serif;
+
     font-weight: normal;
     text-align: center;
 }
@@ -161,7 +168,7 @@ button:hover {
     padding: 16px 24px;
     display: none;
     font-size: 16px;
-    font-family: "Noto Serif SC", serif;
+
 }
 
 #content {
@@ -208,7 +215,7 @@ button:hover {
     border-radius: 0;
     text-align: center;
     font-size: 16px;
-    font-family: "Noto Serif SC", serif;
+
     font-weight: bold;
     color: black;
     background-color: white;
@@ -273,7 +280,7 @@ button:hover {
     flex-wrap: wrap;
     color: rgba(189, 189, 189, 1);
     font-size: 14px;
-    font-family: "Noto Serif SC", serif;
+
 }
 
 .footer-text {

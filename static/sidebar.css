@@ -3,6 +3,11 @@
   width: 100%;
   height: auto;
   animation: opacity-show 0.4s;
+  font-family: 'Noto Serif SC','思源宋体 CN','Source Han Serif SC',sans-serif;
+}
+
+button {
+  font-family: 'Noto Serif SC','思源宋体 CN','Source Han Serif SC',sans-serif;
 }
 
 .user-login,
@@ -15,12 +20,13 @@
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
   background-color: white;
+
 }
 
 .welcome {
   margin: 4px 0 0 0;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
+
   text-align: center;
 }
 
@@ -29,7 +35,7 @@
   width: 100%;
   margin: 12px 0;
   font-size: 20px;
-  font-family: "Noto Serif SC", serif;
+
   font-weight: bold;
   text-align: center;
   overflow-wrap: break-word;
@@ -46,7 +52,7 @@
   border: none;
   background-color: transparent;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
+
   font-weight: bold;
   cursor: pointer;
 }
@@ -73,7 +79,7 @@
   box-shadow: 0 2px 8px rgba(224, 224, 224, 1);
   background-color: white;
   font-size: 16px;
-  font-family: "Noto Serif SC", serif;
+
 }
 
 .link {
@@ -93,7 +99,7 @@
   padding: 8px 16px;
   color: rgba(189, 189, 189, 1);
   font-size: 14px;
-  font-family: "Noto Serif SC", serif;
+
   text-align: center;
 }
 
